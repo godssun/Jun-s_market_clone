@@ -1,7 +1,5 @@
 const form = document.querySelector("#login-form");
 
-let accessToken = null;
-
 const handleSubmit = async (event) => {
   event.preventDefault();
   const formData = new FormData(form);
@@ -9,40 +7,31 @@ const handleSubmit = async (event) => {
   formData.set("password", sha256Password);
 
   const res = await fetch("/login", {
-    method: "POST",
+    method: "post",
     body: formData,
   });
-
   const data = await res.json();
-  accessToken = data.access_token;
-  console.log(accessToken);
+  const accessToken = data.access_token;
+  if (accessToken) {
+    localStorage.setItem("token", accessToken);
+    window.location.pathname = "/";
+  }
 
-  const infoDiv = document.querySelector("#info");
-  infoDiv.innerText = "success login!!";
-  window.localStorage.setItem("token", accessToken);
-  alert("succes login");
-
-  window.location.pathname = "/";
-
-  //   const btn = document.createElement("button");
-  //   btn.innerText = "get items";
-  //   btn.addEventListener("click", async () => {
-  //     const res = await fetch("/items", {
-  //       headers: {
-  //         Authorization: `Bearer ${accessToken}`,
-  //       },
-  //     });
-  //     const data = await res.json();
-  //     console.log(data);
-  //   });
-  infoDiv.appendChild(btn);
+  // //   모든 아이템 리스트 조회
+  // console.log(accessToken);
+  // const res2 = await fetch("/items", {
+  //   headers: {
+  //     Authorization: "Bearer " + accessToken,
+  //   },
+  // });
+  // const data2 = await res2.json();
+  // console.log(data2);
 
   //   if (res.status === 200) {
-  //     alert("success login!!");
+  //     alert("로그인에 성공했습니다!");
+  //     window.location.pathname = "/";
   //   } else if (res.status === 401) {
-  //     alert("Wrong");
-  //   } else {
-  //     console.error(`Unexpected status code: ${res.status}`);
+  //     alert("id 혹은 password가 틀렸습니다.");
   //   }
 };
 
