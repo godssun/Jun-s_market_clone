@@ -1,5 +1,6 @@
 <script>
   import { getDatabase, ref, push } from "firebase/database";
+  import Footer from "../components/Footer.svelte";
 
   let title;
   let price;
@@ -14,6 +15,7 @@
       description,
       place,
     });
+    window.location.hash = "/";
   }
 </script>
 
@@ -38,5 +40,17 @@
     <label for="">장소</label>
     <input type="text" id="place" name="place" bind:value={place} />
   </div>
-  <div><button type="submit">submit</button></div>
+  <div><button class="write-btn2" type="submit">submit</button></div>
 </form>
+
+<Footer location="write" />
+
+<style>
+  .write-btn2 {
+    background-color: antiquewhite;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 5px 12px 5px 12px;
+    cursor: pointer;
+  }
+</style>

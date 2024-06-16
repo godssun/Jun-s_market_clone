@@ -29,10 +29,6 @@ footer {
   transform: scale(0.8);
 }
 
-.footer-icons__img {
-  width: 30px;
-}
-
 @keyframes icon-jump {
   0% {
     transform: translateY(0px);
@@ -46,6 +42,13 @@ footer {
   100% {
     transform: translateY(0px);
   }
+}
+
+.footer-icons__img {
+  width: 30px;
+}
+.home {
+  width: 40px;
 }
 .footer-icons:hover .footer-icons__img {
   animation: 1s icon-jump;
