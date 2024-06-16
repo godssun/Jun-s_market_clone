@@ -6,15 +6,14 @@ import { getStorage } from "firebase/storage";
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
 
-//깃허브 업로드 하면 안됨!!
 const firebaseConfig = {
-  apiKey: "AIzaSyBViwLs9Q0Ygi-2Wgbq9wgDo10J7ns0E0c",
-  authDomain: "carrot-clone-94a4d.firebaseapp.com",
-  databaseURL: "https://carrot-clone-94a4d-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "carrot-clone-94a4d",
-  storageBucket: "carrot-clone-94a4d.appspot.com",
-  messagingSenderId: "729433725392",
-  appId: "1:729433725392:web:c796915c5d41b485b481d5",
+  apiKey: import.meta.env.VITE_APP_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_DB_URL,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING,
+  appId: import.meta.env.VITE_APP_ID,
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
